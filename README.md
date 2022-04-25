@@ -1,7 +1,14 @@
 # coursework-protocols-of-computing-systems
-Курсовая по протоколам вычислительных систем. Написание сервера с использованием Flasck.
+# Data base model
+### NewsPosts(table)
+* `id` - Primary key;
+* `category` - Foreign key(Categories table);
+* `date` (date - DateField) - date publication news;
+* `title` (text - TextField);
+* `text` (text - TextField);
+* `image` (text - TextField) - address.
 
-План: 
-  *Разобраться в используемых инструментах(Flasck и ORM);
-    **Написать простейшее веб приложение hello world!
+### Categories(table)
+* `id` - Primary key;
+* `category` (text - TextField)
   
