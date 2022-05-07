@@ -1,0 +1,89 @@
+@font-face {
+    font-family: Roboto;
+    src: url("static/fonts/Roboto-Regular.ttf");
+}
+
+body{
+    background: #191919;
+    margin: 0;
+}
+
+.navPanel{
+    width: 1250px;
+    height: 61px;
+    background:#fafafa;
+    position: relative;
+    margin: 16px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoBut{
+    position: absolute;
+    width: 147px;
+    height: 61px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoBut img {
+    position: relative;
+    display: block;
+    border: none;
+}
+
+.searchBut{
+    background: none;
+    border: none;
+    position: relative;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.searchBut:hover{
+    cursor: pointer;
+}
+
+.categoryCon{
+    height: 61px;
+    width: 1250px;
+    margin: 16px auto;    
+}
+
+.categoryButton{
+    width: 280px;
+    height: 61px;
+    margin-right: 16px;
+    /* padding: 0 40px 0 40px; */
+    background: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 24px;
+    text-align: center;
+}
+
+.categoryButton p{
+    margin: 17px auto;
+    color: #191919;
+}
+
+.arrowButton{
+    height: 32px;
+    width: 32px;
+    background: none;
+    vertical-align: middle;
+    margin: 0 auto 10 ;
+    border: 0;
+}
+
+.arrowButton img{
+    margin: 0;
+}
+
+.arrowButton:hover{
+    cursor: pointer;
+}
