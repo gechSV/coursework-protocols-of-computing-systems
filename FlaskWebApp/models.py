@@ -15,6 +15,7 @@ class BaseModel(Model):
 # Категории новостей
 class Category(BaseModel):
     category = TextField()
+    displayText = TextField()
 
     class Meta:
         db_table = 'Categories'

@@ -3,6 +3,7 @@
 <head>
   <title>Чтам?</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="/static/JS/navigation.js"></script>
 </head>
 
 <body>
@@ -14,29 +15,18 @@
       <img src="static/images/icon_search.svg">
     </button>
   </div>
+
   <div class="categoryCon">
-   <a href="#" class="categoryButton">
-     <p>Ч по эконмике?</p>
-   </a>
-
-   <a href="#" class="categoryButton">
-    <p>Ч по политике?</p>
-  </a>
-
-  <a href="#" class="categoryButton">
-    <p>Ч по играм?</p>
-  </a>
-
-  <a href="#" class="categoryButton">
-    <p>Ч по спорту?</p>
-  </a>
-
-  <button  class="arrowButton">
-    <img src="static/images/arrow_right.svg" alt=">>">
-  </button>
-  
+  {% for item in cat%}
+    <a href="#" class="categoryButton">
+      <p>{{item.text}}</p>
+    </a>
+  {% endfor %}
+    <button  class="arrowButton" id="arrowButton" onclick="onClickArrowButton()">
+      <img src="static/images/arrow_right.svg" alt=">>">
+    </button>
   </div>
+  
 </body>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
 </html>
