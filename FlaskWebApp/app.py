@@ -6,23 +6,21 @@ from json import *
 
 app = Flask(__name__)
 
-# with db:
-#     db.create_tables([Category, NewsPost])
-#     cat = Category(category='Sport', displayText='Ч по спорту?')
-#     cat.save()
-
-
+# TODO: узнать возможно ли перенести большие функции в отдельный файл?
 @app.route("/")
 def index(): 
-    # Получаем категории
-    cat = []  
+    cat = [] 
+    # Получаем данные из таблицы Category для заполнения 
+    # каталога категорий на главной странице 
     for index in Category.select():
         cat.append({'id':index.id, 'category':index.category, 'text':index.displayText})
+        
+    # Запрос курсов валют
+    currencyUSD = getСurrencyUSD()
+    currencyEUR = getСurrencyEUR()
+    
     return render_template("main.html", user='Valery', cat = cat)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# cat = Category.get(Category.id == 1)
-    # print (cat.displayText)

@@ -1,2 +1,31 @@
-{% extends 'navigation.html' %}
+{% include 'navigation.html' %}
+<body>    
+    <!-- Категории -->
+    <div class="categoryCon">
+        {% for item in cat if item.id <= 4%}
+          <a href="#" class="categoryButton">
+            <p>{{item.text}}</p>
+          </a>
+        {% endfor %}
+      
+          <button  class="arrowButton" id="arrowButton" onclick="onClickArrowButton()">
+            <img src="static/images/arrow_right.svg" alt=">>">
+          </button>
+        </div>
 
+        <!-- Дополнительные категории -->
+        <div class="otherCategories" id="otherCategories">
+        {% for item in cat if item.id >= 5 %}
+          <a href="#" class="categoryButton">
+            <p>{{item.text}}</p>
+          </a>
+        {% endfor %}
+        </div>
+        
+    <!-- Курс валют -->
+    <div class="currencyConteiner">
+        <div>
+            <p>Курсы валют</p>    
+        </div>
+    </div>
+</body>

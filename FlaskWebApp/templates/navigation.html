@@ -16,16 +16,6 @@
     </button>
   </div>
 
-  <div class="categoryCon">
-  {% for item in cat%}
-    <a href="#" class="categoryButton">
-      <p>{{item.text}}</p>
-    </a>
-  {% endfor %}
-    <button  class="arrowButton" id="arrowButton" onclick="onClickArrowButton()">
-      <img src="static/images/arrow_right.svg" alt=">>">
-    </button>
-  </div>
   
 </body>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
