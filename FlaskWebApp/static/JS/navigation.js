@@ -17,3 +17,15 @@ function onClickArrowButton()
         conteiner.style.display = 'flex';
     }
 }
+
+// window.onload = function(){
+//     var info = document.getElementById("weatherConditions");
+//     var icon = document.getElementById("weatherIcon");
+
+
+//     if(info.textContent.toUpperCase() === "облачно с прояснениями".toUpperCase)
+//     {
+//         icon.src = "static/images/cloud.svg"
+//         console.log(info.textContent)
+//     }
+// };

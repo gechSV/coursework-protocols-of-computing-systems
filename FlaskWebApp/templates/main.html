@@ -1,5 +1,6 @@
 {% include 'navigation.html' %}
 <body>    
+
     <!-- Категории -->
     <div class="categoryCon">
         {% for item in cat if item.id <= 4%}
@@ -25,7 +26,107 @@
     <!-- Курс валют -->
     <div class="currencyConteiner">
         <div>
-            <p>Курсы валют</p>    
+            <p>Курсы валют</p>
+            <p class="dtCurrency">{{dateTime}}</p>    
         </div>
+
+        <!-- курс доллара -->
+        <p class="pCurrency">$ {{currency.USD}}</p>
+        {% if currency.USD_Y  > 0 %}
+          <p class="pDifferenceGreen">{{currency.USD_Y}}</p>
+        {% else %}
+          <p class="pDifferenceRED">{{currency.USD_Y}}</p>
+        {% endif %}
+
+        <!-- курс евро -->
+        <p class="pCurrency">€ {{currency.EUR}}</p>
+        {% if currency.EUR_Y > 0 %}
+          <p class="pDifferenceGreen">{{currency.EUR_Y}}</p>
+        {% else %}
+          <p class="pDifferenceRED">{{currency.EUR_Y}}</p>
+        {% endif %}
+
+        <!-- курс юаня -->
+        <p class="pCurrency">¥ {{currency.CNY}}</p>
+        {% if currency.CNY_Y > 0 %}
+          <p class="pDifferenceGreen">{{currency.CNY_Y}}</p>
+        {% else %}
+          <p class="pDifferenceRED">{{currency.CNY_Y}}</p>
+        {% endif %}
+
+        <!-- курс фунта -->
+        <p class="pCurrency">£ {{currency.GBP}}</p>
+        {% if currency.GBP_Y > 0 %}
+          <p class="pDifferenceGreen">{{currency.GBP_Y}}</p>
+        {% else %}
+          <p class="pDifferenceRED">{{currency.GBP_Y}}</p>
+        {% endif %}
+    </div>
+
+    <!-- Погода -->
+    <div class="weatherConteiner">
+      <!-- Город -->
+      <div class="CityName"> 
+        <p>
+          Центральный район, {{weather.name}}
+        </p> 
+      </div>
+
+      <div class="tempLogoConteiner">
+        <!-- Температура -->
+        {% if  weather.temp > 0%}
+          <div class="tempWeather">
+            <p>
+               +{{weather.temp}}
+            </p>
+          </div>
+        {% else %}
+        <div>
+          <p>
+             -{{weather.temp}}
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- значёк -->
+        <div>
+          {% if  weather.conditions == "Облачно с прояснениями"%}
+            <img class="weatherIcon" src="static\images\cloudSun.svg" alt="^_^">
+          {% endif %}
+          {% if  weather.conditions == "Пасмурно"%}
+            <img class="weatherIcon" src="static\images\cloud.svg" alt="^_^">
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- условия -->
+      <div class="weatherConditions">
+        <p>
+          {{ weather.conditions}}
+        </p>
+      </div>
+
+      <!-- ветер -->
+      <div class="weatherWind">
+        <img src="static\images\wind.svg" alt="=3">
+        <p>
+          {{ weather.wind}} м/с
+        </p>
+      </div>
+      <!-- влажность -->
+      <div class="weatherHumidity">
+        <img src="static\images\humidity.svg" alt="c>">
+        <p>
+          {{weather.humidity}}%
+        </p>
+      </div>
+      <!-- давление -->
+      <div class="weatherPressure">
+        <img src="static\images\pressure.svg" alt="O">
+        <p>
+          {{weather.pressure}}
+        </p>
+        <p>мм.<br>рт.ст</p>
+      </div>
     </div>
 </body>
