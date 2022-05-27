@@ -28,6 +28,10 @@ body{
     align-items: center;
 }
 
+.navPanel:last-child{
+    margin: 8px auto 16px;
+}
+
 .logoBut{
     position: absolute;
     width: 147px;
@@ -156,17 +160,31 @@ body{
 }
 
 .newsCatDinam500{
+    position: relative;
     width: 500px;
     height: 520px;
     background-color: #fafafa;
     margin: 8px;
 }
 
+.newsCatDinam500 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;	
+}
+
 .newsCatDinam808{
+    position: relative;
     width: 808px;
     height: 520px;
     background-color: #fafafa;
     margin: 8px;
+}
+
+.newsCatDinam808 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;	
 }
 
 .newsCatDinam1324{
@@ -177,6 +195,12 @@ body{
     margin: 8px;
 }
 
+.newsCatDinam1324 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;	
+}
+
 .newsCatDinam430{
     position: relative;
     width: 430px;
@@ -185,13 +209,14 @@ body{
     margin: 8px;
 }
 
-
-/* контейнер для текста новости */
-.newsCatTextCon500{
-
+.newsCatDinam430 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;	
 }
 
 
+/* контейнер для текста новости */
 .newsCatTextCon1324{
     position: absolute;
     bottom: 0px;
@@ -204,10 +229,27 @@ body{
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    min-height: 80px;
 }
 
 .newsCatTextCon500{
+    min-height: 80px;
+    position: absolute;
+    bottom: 0px;
+    background: rgba(250, 250, 250, 0.5);
+    backdrop-filter: blur(4px);
+    margin-top: 100%;
+    width: 100%;
+}
 
+.newsCatTextCon808{
+    min-height: 80px;
+    position: absolute;
+    bottom: 0px;
+    background: rgba(250, 250, 250, 0.5);
+    backdrop-filter: blur(4px);
+    margin-top: 100%;
+    width: 100%;
 }
 
 .newsCatTextCon430{
@@ -217,6 +259,7 @@ body{
     backdrop-filter: blur(4px);
     margin-top: 100%;
     width: 100%;
+    min-height: 80px;
 }
 
 /* текст */
@@ -229,6 +272,20 @@ body{
 }
 
 .newsCatDinam430 p {
+    margin: 10px 0 10px 20px;
+    font-family: 'Roboto';
+    font-size: 24px;
+    color: #191919;
+}
+
+.newsCatDinam500 p {
+    margin: 10px 0 10px 20px;
+    font-family: 'Roboto';
+    font-size: 24px;
+    color: #191919;
+}
+
+.newsCatDinam808 p {
     margin: 10px 0 10px 20px;
     font-family: 'Roboto';
     font-size: 24px;
@@ -255,4 +312,15 @@ body{
 	height: 0;
 	border: none;
 	border-top: 1px solid #333;
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+    margin: 2px;
+}   
+
+body::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #C4C4C4;  
 }

@@ -25,7 +25,7 @@ def getСurrency():
 
     r = 2
     return {'USD':round(rates['USD'].value, r), 'EUR':round(rates['EUR'].value, r), 
-            'CNY':round(rates['CNY'].value/10, r), 'GBP':round(rates['GBP'].value, r),
+            'CNY':round(rates['CNY'].value, r), 'GBP':round(rates['GBP'].value, r),
             'USD_Y':round(rates['USD'].value, r) - round(rates_yesterday['USD'].value, r),
             'EUR_Y':round(rates['EUR'].value, r) - round(rates_yesterday['EUR'].value, r), 
             'CNY_Y':round(rates['CNY'].value, r) - round(rates_yesterday['CNY'].value, r),
@@ -95,6 +95,7 @@ def markingUp(length):
 
     lineFlag1 = False
 
+    ret.append(lineType_2)
     ret.append(lineType_2)
     ret.append(lineType_3)
     ret.append(lineType_3)

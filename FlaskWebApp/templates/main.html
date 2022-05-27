@@ -153,22 +153,9 @@
 
     <!-- новости -->
     <div class="newsBody">
-      {% for i in range(0, countNews) %}
+      {% for i in range(1, countNews) %}
         <div class = "newsCatDinam{{ markingUp[i].width }}">
-          <style>
-            .newsCatDinam500{
-              background-image:url({{newsPost[i].img}});
-            }
-            .newsCatDinam808{
-              background-image:url({{newsPost[i].img}});
-            }
-            .newsCatDinam1324{
-              background-image:url({{newsPost[i].img}});
-            }
-            .newsCatDinam430{
-              background-image:url({{newsPost[i].img}});
-            }
-          </style>
+          <img src="{{newsPost[i].img}}" alt="">
             <div class="newsCatTextCon{{ markingUp[i].width }}">
               <hr class="hr-line">
               <p>{{ newsPost[i].title }}</p>
@@ -176,5 +163,14 @@
             </div>
         </div>
       {% endfor %}
+    </div>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/currency.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/weather.css') }}">
+
+    <div class="navPanel">
+      <a href="#" class="logoBut">
+        <img src="static/images/Logo.svg">
+      </a>
     </div>
 </body>
