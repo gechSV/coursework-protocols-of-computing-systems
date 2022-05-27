@@ -11,7 +11,10 @@
 body{
     background: #191919;
     margin: 0 auto;
-    width: 1324px;
+    width: 1340px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 .navPanel{
@@ -105,3 +108,151 @@ body{
     display: none;
 }
 
+.currencyAndWeather{
+    width: 406px;
+    height: auto;
+    margin: 0 0 8px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.mainNews{
+    position: relative;
+    margin: 0 0 8px 16px;
+    width: 902px;
+    height: 486px;
+    background-color: #fafafa;
+    float:  right;
+}
+
+.mainNews img{
+    width: 100%;
+    height: 100%;
+}
+
+.mainNewsTitle{
+    position: absolute;
+    bottom: 0px;
+    background: rgba(250, 250, 250, 0.5);
+    backdrop-filter: blur(4px);
+    margin-top: 100%;
+}
+
+.mainNewsTitle p{
+    margin: 10px 0 10px 20px;
+    font-family: 'Roboto';
+    font-size: 32px;
+    color: #191919;
+}
+
+/* контейнеры для новостей */
+.newsBody{
+    margin: 0 auto;
+    width: 1340px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.newsCatDinam500{
+    width: 500px;
+    height: 520px;
+    background-color: #fafafa;
+    margin: 8px;
+}
+
+.newsCatDinam808{
+    width: 808px;
+    height: 520px;
+    background-color: #fafafa;
+    margin: 8px;
+}
+
+.newsCatDinam1324{
+    position: relative;
+    width: 1324px;
+    height: 520px;
+    background-color: #fafafa;
+    margin: 8px;
+}
+
+.newsCatDinam430{
+    position: relative;
+    width: 430px;
+    height: 520px;
+    background-color: #fafafa;
+    margin: 8px;
+}
+
+
+/* контейнер для текста новости */
+.newsCatTextCon500{
+
+}
+
+
+.newsCatTextCon1324{
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(250, 250, 250, 0.5);
+    backdrop-filter: blur(4px);
+    margin: 0 0 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.newsCatTextCon500{
+
+}
+
+.newsCatTextCon430{
+    position: absolute;
+    bottom: 0px;
+    background: rgba(250, 250, 250, 0.5);
+    backdrop-filter: blur(4px);
+    margin-top: 100%;
+    width: 100%;
+}
+
+/* текст */
+.newsCatTextCon1324 p{
+    margin: 0 20px 0 20px;
+    font-family: 'Roboto';
+    font-size: 38px;
+    color: #191919;
+    text-align: center;
+}
+
+.newsCatDinam430 p {
+    margin: 10px 0 10px 20px;
+    font-family: 'Roboto';
+    font-size: 24px;
+    color: #191919;
+}
+
+/* линии */
+.newsCatTextCon500 hr{
+    display: none;
+}
+
+.newsCatTextCon430 hr{
+    display: none;
+}
+
+.newsCatTextCon808 hr{
+    display: none;
+}
+
+.newsCatTextCon1324 hr{
+    margin: 20px 10xp;
+    width: 90%;
+    padding: 0;
+	height: 0;
+	border: none;
+	border-top: 1px solid #333;
+}

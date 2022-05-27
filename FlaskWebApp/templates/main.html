@@ -22,111 +22,159 @@
           </a>
         {% endfor %}
         </div>
-        
-    <!-- Курс валют -->
-    <div class="currencyConteiner">
-        <div>
-            <p>Курсы валют</p>
-            <p class="dtCurrency">{{dateTime}}</p>    
-        </div>
+   
+    <div class="currencyAndWeather">
+      <!-- Курс валют -->
+      <div class="currencyConteiner">
+          <div>
+              <p>Курсы валют</p>
+              <p class="dtCurrency">{{dateTime}}</p>    
+          </div>
 
-        <!-- курс доллара -->
-        <p class="pCurrency">$ {{currency.USD}}</p>
-        {% if currency.USD_Y  > 0 %}
-          <p class="pDifferenceGreen">{{currency.USD_Y}}</p>
-        {% else %}
-          <p class="pDifferenceRED">{{currency.USD_Y}}</p>
-        {% endif %}
+          <!-- курс доллара -->
+          <p class="pCurrency">$ {{currency.USD}}</p>
+          {% if currency.USD_Y  > 0 %}
+            <p class="pDifferenceGreen">{{currency.USD_Y}}</p>
+          {% else %}
+            <p class="pDifferenceRED">{{currency.USD_Y}}</p>
+          {% endif %}
 
-        <!-- курс евро -->
-        <p class="pCurrency">€ {{currency.EUR}}</p>
-        {% if currency.EUR_Y > 0 %}
-          <p class="pDifferenceGreen">{{currency.EUR_Y}}</p>
-        {% else %}
-          <p class="pDifferenceRED">{{currency.EUR_Y}}</p>
-        {% endif %}
+          <!-- курс евро -->
+          <p class="pCurrency">€ {{currency.EUR}}</p>
+          {% if currency.EUR_Y > 0 %}
+            <p class="pDifferenceGreen">{{currency.EUR_Y}}</p>
+          {% else %}
+            <p class="pDifferenceRED">{{currency.EUR_Y}}</p>
+          {% endif %}
 
-        <!-- курс юаня -->
-        <p class="pCurrency">¥ {{currency.CNY}}</p>
-        {% if currency.CNY_Y > 0 %}
-          <p class="pDifferenceGreen">{{currency.CNY_Y}}</p>
-        {% else %}
-          <p class="pDifferenceRED">{{currency.CNY_Y}}</p>
-        {% endif %}
+          <!-- курс юаня -->
+          <p class="pCurrency">¥ {{currency.CNY}}</p>
+          {% if currency.CNY_Y > 0 %}
+            <p class="pDifferenceGreen">{{currency.CNY_Y}}</p>
+          {% else %}
+            <p class="pDifferenceRED">{{currency.CNY_Y}}</p>
+          {% endif %}
 
-        <!-- курс фунта -->
-        <p class="pCurrency">£ {{currency.GBP}}</p>
-        {% if currency.GBP_Y > 0 %}
-          <p class="pDifferenceGreen">{{currency.GBP_Y}}</p>
-        {% else %}
-          <p class="pDifferenceRED">{{currency.GBP_Y}}</p>
-        {% endif %}
-    </div>
-
-    <!-- Погода -->
-    <div class="weatherConteiner">
-      <!-- Город -->
-      <div class="CityName"> 
-        <p>
-          Центральный район, {{weather.name}}
-        </p> 
+          <!-- курс фунта -->
+          <p class="pCurrency">£ {{currency.GBP}}</p>
+          {% if currency.GBP_Y > 0 %}
+            <p class="pDifferenceGreen">{{currency.GBP_Y}}</p>
+          {% else %}
+            <p class="pDifferenceRED">{{currency.GBP_Y}}</p>
+          {% endif %}
       </div>
 
-      <div class="tempLogoConteiner">
-        <!-- Температура -->
-        {% if  weather.temp > 0%}
-          <div class="tempWeather">
+      <!-- Погода -->
+      <div class="weatherConteiner">
+        <!-- Город -->
+        <div class="CityName"> 
+          <p>
+            Центральный район, {{weather.name}}
+          </p> 
+        </div>
+
+        <div class="tempLogoConteiner">
+          <!-- Температура -->
+          {% if  weather.temp > 0%}
+            <div class="tempWeather">
+              <p>
+                 +{{weather.temp}}
+              </p>
+            </div>
+          {% else %}
+          <div>
             <p>
-               +{{weather.temp}}
+               -{{weather.temp}}
             </p>
           </div>
-        {% else %}
-        <div>
+          {% endif %}
+
+          <!-- значёк -->
+          <div>
+            {% if  weather.conditions == "Облачно с прояснениями"%}
+              <img class="weatherIcon" src="static\images\cloudSun.svg" alt="^_^">
+            {% endif %}
+            {% if  weather.conditions == "Пасмурно"%}
+              <img class="weatherIcon" src="static\images\cloud.svg" alt="^_^">
+            {% endif %}
+            {% if  weather.conditions == "Небольшая облачность"%}
+              <img class="weatherIcon" src="static\images\cloud.svg" alt="^_^">
+            {% endif %}
+            {% if  weather.conditions == "Ясно"%}
+            <!-- TODO: желательно заменить иконку, выглядит неочень -->
+              <img class="weatherIcon" src="static\images\sun.svg" alt="^_^">
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- условия -->
+        <div class="weatherConditions">
           <p>
-             -{{weather.temp}}
+            {{ weather.conditions}}
           </p>
         </div>
-        {% endif %}
 
-        <!-- значёк -->
-        <div>
-          {% if  weather.conditions == "Облачно с прояснениями"%}
-            <img class="weatherIcon" src="static\images\cloudSun.svg" alt="^_^">
-          {% endif %}
-          {% if  weather.conditions == "Пасмурно"%}
-            <img class="weatherIcon" src="static\images\cloud.svg" alt="^_^">
-          {% endif %}
+        <!-- ветер -->
+        <div class="weatherWind">
+          <img src="static\images\wind.svg" alt="=3">
+          <p>
+            {{ weather.wind}} м/с
+          </p>
+        </div>
+        <!-- влажность -->
+        <div class="weatherHumidity">
+          <img src="static\images\humidity.svg" alt="c>">
+          <p>
+            {{weather.humidity}}%
+          </p>
+        </div>
+        <!-- давление -->
+        <div class="weatherPressure">
+          <img src="static\images\pressure.svg" alt="O">
+          <p>
+            {{weather.pressure}}
+          </p>
+          <p>мм.<br>рт.ст</p>
         </div>
       </div>
+    </div>  
 
-      <!-- условия -->
-      <div class="weatherConditions">
-        <p>
-          {{ weather.conditions}}
-        </p>
-      </div>
+    <!-- Главная новость -->
+    <div class="mainNews"  >
+      <style>
+        .mainNews{
+          background-image:url({{newsPost[0].img}});
+        }
+      </style>
+        <div class="mainNewsTitle">
+          <p>{{newsPost[0].title}}</p>
+        </div>
+    </div>
 
-      <!-- ветер -->
-      <div class="weatherWind">
-        <img src="static\images\wind.svg" alt="=3">
-        <p>
-          {{ weather.wind}} м/с
-        </p>
-      </div>
-      <!-- влажность -->
-      <div class="weatherHumidity">
-        <img src="static\images\humidity.svg" alt="c>">
-        <p>
-          {{weather.humidity}}%
-        </p>
-      </div>
-      <!-- давление -->
-      <div class="weatherPressure">
-        <img src="static\images\pressure.svg" alt="O">
-        <p>
-          {{weather.pressure}}
-        </p>
-        <p>мм.<br>рт.ст</p>
-      </div>
+    <!-- новости -->
+    <div class="newsBody">
+      {% for i in range(0, countNews) %}
+        <div class = "newsCatDinam{{ markingUp[i].width }}">
+          <style>
+            .newsCatDinam500{
+              background-image:url({{newsPost[i].img}});
+            }
+            .newsCatDinam808{
+              background-image:url({{newsPost[i].img}});
+            }
+            .newsCatDinam1324{
+              background-image:url({{newsPost[i].img}});
+            }
+            .newsCatDinam430{
+              background-image:url({{newsPost[i].img}});
+            }
+          </style>
+            <div class="newsCatTextCon{{ markingUp[i].width }}">
+              <hr class="hr-line">
+              <p>{{ newsPost[i].title }}</p>
+              <hr class="hr-line">
+            </div>
+        </div>
+      {% endfor %}
     </div>
 </body>

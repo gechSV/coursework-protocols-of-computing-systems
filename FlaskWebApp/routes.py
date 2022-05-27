@@ -6,6 +6,7 @@ from xml.etree.ElementTree import tostring
 import requests
 import json
 import datetime as dt
+import random
 
 # библиотека для запроса курса валют у Центр банка РФ 
 from pycbrf.toolbox import ExchangeRates, Banks
@@ -83,6 +84,61 @@ def getWeather():
         pass
 
 
+def markingUp(length):
+    """Генерирует размеры плиток на главной странице"""
+    # 1324 - ширина полотна
+    ret = []
+    lineType_11 = {'width':500, 'height': 520}
+    lineType_12 = {'width':808, 'height': 520}
+    lineType_2 = {'width':1324, 'height':520}
+    lineType_3 = {'width':430, 'height':520}
+
+    lineFlag1 = False
+
+    ret.append(lineType_2)
+    ret.append(lineType_3)
+    ret.append(lineType_3)
+    ret.append(lineType_3)
+    ret.append(lineType_11)
+    ret.append(lineType_12)
+    ret.append(lineType_3)
+    ret.append(lineType_3)
+    ret.append(lineType_3)
+    ret.append(lineType_12)
+    ret.append(lineType_11)
+
+    # for i in range(length - 1):
+    #     print(i)
+    #     if i == 0:
+    #         ret.append(lineType_2)
+    #         continue
+    #     if length == 2:
+    #          if lineFlag1:
+    #             ret.append(lineType_12)
+    #             ret.append(lineType_11)
+    #             lineFlag1 = False
+    #             i+=2
+    #          else:
+    #             ret.append(lineType_11)
+    #             ret.append(lineType_12)
+    #             lineFlag1 = True
+    #             i+=2
+    #          continue
+    #     if length == 1:
+    #           ret.append(lineType_2)
+    #           continue
+    #     gen = random.randint(1, 3)
+    #     if gen == 1:
+    #         ret.append(lineType_2)
+    #     elif gen ==2:
+    #         ret.append(lineType_2)
+    #     elif gen == 3:
+    #         ret.append(lineType_3)
+    #         ret.append(lineType_3)
+    #         ret.append(lineType_3)
+    #         i+=3
+    
+    return ret
 
 
 # # LayerAPI 100 запросов в месяц, закончились)
