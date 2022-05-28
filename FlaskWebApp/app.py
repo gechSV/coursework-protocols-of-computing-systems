@@ -33,6 +33,17 @@ def index():
                             newsPost = newsPost, countNews = len(newsPost), 
                             markingUp = markingUp(len(newsPost)))
 
+@app.route("/admin")
+def admin():
+    newsPost = []
+    dt_now = dt.datetime.now()
+
+    for index in NewsPost.select():
+        newsPost.append({'id':index.id, 'categoryId': index.category_id, 
+        'date':index.date, 'title':index.title, 'text':index.text, 'img':index.image})
+
+
+    return render_template("admin.html", newsPost=newsPost, len = len(newsPost)+1, date = dt_now.strftime('%d.%m.%Y') )
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,41 @@
+{% include 'adminNavigation.html' %}
+
+<body>
+    <table class="table">
+        <tr>
+            <th class="tableHead">ID</th>
+            <th class="tableHead">ID категории</th>
+            <th class="tableHead">Дата</th>
+            <th class="tableHead">Заголовок</th>
+            <th class="tableHead">Текст</th>
+            <th class="tableHead">Изображение</th>
+            <th class="tableHead">Действие</th>
+        </tr>
+    {% for item in newsPost %}
+        <tr contenteditable="true">
+            <td class="tdInfo"><p>{{item.id}}</p></td>
+            <td class="tdInfo"><p>{{item.categoryId}}</p></td>
+            <td class="tdInfo"><p>{{item.date}}</p></td>
+            <td class="tdInfo"><p>{{item.title}}</p></td>
+            <td class="tdInfo"><p>{{item.text}}</p></td>
+            <td class="tdInfo"><p>{{item.img}}</p></td>
+            <td class="tdButton" contenteditable="false">
+                <button class="Correct">изменить</button>
+                <button class="Delete">удалить</button>
+            </td>
+        </tr>
+    {% endfor %}
+        <tr contenteditable="true">
+            <td class="tdInfo"><p>{{len}}</p></td>
+            <td class="tdInfo"><p>0</p></td>
+            <td class="tdInfo"><p>{{date}}</p></td>
+            <td class="tdInfo"><p> </p></td>
+            <td class="tdInfo"><p> </p></td>
+            <td class="tdInfo"><p> </p></td>
+            <td class="tdButton" contenteditable="false">
+                <button class="Add">Добавить</button>
+            </td>
+        </tr>
+    </table>
+</body>
+   
