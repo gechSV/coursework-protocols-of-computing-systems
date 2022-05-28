@@ -13,16 +13,18 @@
         </tr>
     {% for item in newsPost %}
         <tr contenteditable="true">
-            <td class="tdInfo"><p>{{item.id}}</p></td>
-            <td class="tdInfo"><p>{{item.categoryId}}</p></td>
-            <td class="tdInfo"><p>{{item.date}}</p></td>
-            <td class="tdInfo"><p>{{item.title}}</p></td>
-            <td class="tdInfo"><p>{{item.text}}</p></td>
-            <td class="tdInfo"><p>{{item.img}}</p></td>
-            <td class="tdButton" contenteditable="false">
-                <button class="Correct">изменить</button>
-                <button class="Delete">удалить</button>
-            </td>
+            <form method="POST" contenteditable="true" action="/chengeOrDeleteData">   
+                <td class="tdInfo"><input type="text" name="id" value="{{item.id}}"></td>
+                <td class="tdInfo"><input type="text" name="idCat" value="{{item.categoryId}}"></td>
+                <td class="tdInfo"><input type="text" name="date" value="{{item.date}}"></td>
+                <td class="tdInfo"><textarea type="text" name="title">{{item.title}}</textarea></td>
+                <td class="tdInfo"><textarea type="text" name="text">{{item.text}}</textarea></td>
+                <td class="tdInfo"><input type="text" name="img" value="{{item.img}}"></td>
+                <td class="tdButton" contenteditable="false">
+                    <input name="Button" class="Delete" type="submit" value="Удалить">
+                    <input name="Button" class="Correct" type="submit" value="Изменить">
+                </td>
+            </form>
         </tr>
     {% endfor %}
         <form method="POST" contenteditable="true" action="/addData">
@@ -33,7 +35,7 @@
             <td class="tdInfo"><input type="text" name="text" value=""></td>
             <td class="tdInfo"><input type="text" name="img" value=""></td>
             <td class="tdButton" contenteditable="false">
-                <input class="Add" type="submit" value="Добавить">
+                <input name="ADD" class="Add" type="submit" value="Добавить">
             </td>
         </form>
     </table>

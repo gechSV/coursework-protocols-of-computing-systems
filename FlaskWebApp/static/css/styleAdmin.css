@@ -75,7 +75,7 @@ body::-webkit-scrollbar-thumb {
     overflow: hidden;
 }
 
-.tdInfo p{
+.tdInfo input{
     overflow: auto;
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
@@ -85,6 +85,19 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     min-width: 50px;
     min-height: 20px;
+}
+
+.tdInfo textarea{
+    font-size: 16px;
+    font-family: 'Roboto';
+    color: #fafafa;
+    margin: 0;
+    width: 300px;
+    background: none;
+    border: none;
+    max-width: 500px;
+    min-width: 321px;
+    min-height: 100px;
 }
 
 .tdInfo input{
@@ -105,12 +118,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.tdInfo p::-webkit-scrollbar {
+.tdInfo textarea::-webkit-scrollbar {
     width: 5px;
     margin: 2px;
 }   
 
-.tdInfo p::-webkit-scrollbar-thumb {
+.tdInfo textarea::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: #fafafa;  
@@ -139,11 +152,13 @@ body::-webkit-scrollbar-thumb {
 .Correct{
     color: #191919;
     margin: 0 0 8px 0;
+    width: 80px;
 }
 
 .Delete{
     color: red;
     margin: 8px 0 0 0 ;
+    width: 80px;
 }
 
 .Add{

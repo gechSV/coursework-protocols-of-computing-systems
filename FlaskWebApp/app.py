@@ -1,4 +1,6 @@
 from email.mime import image
+from hashlib import new
+from unicodedata import category
 from flask import *
 from models import *
 from routes import *
@@ -44,11 +46,27 @@ def admin():
 @app.route("/addData", methods=['GET', 'POST'])
 def addData():
     if request.method == 'POST':
+        print(request.form)
         new = NewsPost.create(id = request.form['id'], category = request.form['idCat'], 
                               date = request.form['date'], title = request.form['title'], 
                               text = request.form['text'], image = request.form['img'])
         return redirect("/admin")
 
+
+@app.route("/chengeOrDeleteData", methods=['GET', 'POST'])
+def ChangeAndDel():
+    if request.method == 'POST':
+        print(request.form)
+
+        if request.form['Button'] == "Изменить":
+            news = NewsPost.get(NewsPost.id == request.form['id'])
+            news.update(**{'category':request.form['idCat'], 
+                        'date':request.form['date'], 'title':request.form['title'], 
+                        'text' : request.form['text'], 'image':request.form['img']}).where(NewsPost.id == request.form['id']).execute()
+        elif request.form['Button'] == "Удалить":
+            news = NewsPost.get(NewsPost.id == request.form['id'])
+            news.delete_instance() 
+        return redirect("/admin")
 
 if __name__ == "__main__":
     app.run(debug=True)
