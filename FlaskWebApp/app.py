@@ -1,8 +1,5 @@
-from hashlib import new
-from random import random
-from turtle import width
-from unicodedata import category
-from flask import Flask, render_template, url_for
+from email.mime import image
+from flask import *
 from models import *
 from routes import *
 from json import *
@@ -33,7 +30,7 @@ def index():
                             newsPost = newsPost, countNews = len(newsPost), 
                             markingUp = markingUp(len(newsPost)))
 
-@app.route("/admin")
+@app.route("/admin", methods=['GET', 'POST'])
 def admin():
     newsPost = []
     dt_now = dt.datetime.now()
@@ -42,8 +39,16 @@ def admin():
         newsPost.append({'id':index.id, 'categoryId': index.category_id, 
         'date':index.date, 'title':index.title, 'text':index.text, 'img':index.image})
 
-
     return render_template("admin.html", newsPost=newsPost, len = len(newsPost)+1, date = dt_now.strftime('%d.%m.%Y') )
+
+@app.route("/addData", methods=['GET', 'POST'])
+def addData():
+    if request.method == 'POST':
+        new = NewsPost.create(id = request.form['id'], category = request.form['idCat'], 
+                              date = request.form['date'], title = request.form['title'], 
+                              text = request.form['text'], image = request.form['img'])
+        return redirect("/admin")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

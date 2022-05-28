@@ -25,17 +25,17 @@
             </td>
         </tr>
     {% endfor %}
-        <tr contenteditable="true">
-            <td class="tdInfo"><p>{{len}}</p></td>
-            <td class="tdInfo"><p>0</p></td>
-            <td class="tdInfo"><p>{{date}}</p></td>
-            <td class="tdInfo"><p> </p></td>
-            <td class="tdInfo"><p> </p></td>
-            <td class="tdInfo"><p> </p></td>
+        <form method="POST" contenteditable="true" action="/addData">
+            <td class="tdInfo"><input type="text" name="id"  value="{{len}}"></td>
+            <td class="tdInfo"><input type="text" name="idCat" value="0"></td>
+            <td class="tdInfo"><input type="text" name="date" value="{{date}}"></td>
+            <td class="tdInfo"><input type="text" name="title" value=""></td>
+            <td class="tdInfo"><input type="text" name="text" value=""></td>
+            <td class="tdInfo"><input type="text" name="img" value=""></td>
             <td class="tdButton" contenteditable="false">
-                <button class="Add">Добавить</button>
+                <input class="Add" type="submit" value="Добавить">
             </td>
-        </tr>
+        </form>
     </table>
 </body>
    
