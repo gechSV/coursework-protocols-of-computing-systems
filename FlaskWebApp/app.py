@@ -14,6 +14,7 @@ app = Flask(__name__)
 # TODO: узнать возможно ли перенести большие функции в отдельный файл?
 @app.route("/")
 def index(): 
+    saveLog("Request /")
     dt_now = dt.datetime.now()
     cat = [] 
     newsPost = []
@@ -22,11 +23,14 @@ def index():
     # каталога категорий на главной странице 
     for index in Category.select():
         cat.append({'id':index.id, 'category':index.category, 'text':index.displayText})
+    saveLog("The query to the category table has been completed.")
 
-    # random.shuffle(sequence, [rand]) 
+    # Получаем новости 
     for index in NewsPost.select():
         newsPost.append({'id':index.id, 'date':index.date, 'title':index.title, 'text':index.text, 'img':index.image})
-
+    saveLog("The request to the news table has been completed.")
+    
+    saveLog("Render main.html")
     return render_template("main.html", cat = cat, currency = getСurrency(),
                             dateTime = dt_now.strftime('%d.%m.%Y'), weather = getWeather(), 
                             newsPost = newsPost, countNews = len(newsPost), 
@@ -40,7 +44,9 @@ def admin():
     for index in NewsPost.select():
         newsPost.append({'id':index.id, 'categoryId': index.category_id, 
         'date':index.date, 'title':index.title, 'text':index.text, 'img':index.image})
+    saveLog("The request to the news table has been completed.")
 
+    saveLog("Render admin.html")
     return render_template("admin.html", newsPost=newsPost, len = len(newsPost)+1, date = dt_now.strftime('%d.%m.%Y') )
 
 @app.route("/addData", methods=['GET', 'POST'])
@@ -50,11 +56,14 @@ def addData():
         new = NewsPost.create(id = request.form['id'], category = request.form['idCat'], 
                               date = request.form['date'], title = request.form['title'], 
                               text = request.form['text'], image = request.form['img'])
+        saveLog('the row is added to the "Categories" table')
+        saveLog('redirect admin.html')
         return redirect("/admin")
 
 
 @app.route("/chengeOrDeleteData", methods=['GET', 'POST'])
 def ChangeAndDel():
+    newsPost = []
     if request.method == 'POST':
         print(request.form)
 
@@ -63,10 +72,14 @@ def ChangeAndDel():
             news.update(**{'category':request.form['idCat'], 
                         'date':request.form['date'], 'title':request.form['title'], 
                         'text' : request.form['text'], 'image':request.form['img']}).where(NewsPost.id == request.form['id']).execute()
+            saveLog('row data changed, id-' + request.form['id'])
+
         elif request.form['Button'] == "Удалить":
             news = NewsPost.get(NewsPost.id == request.form['id'])
             news.delete_instance() 
+            saveLog('row data delete, id-' + request.form['id'])
         return redirect("/admin")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
